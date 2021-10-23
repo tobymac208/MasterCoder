@@ -1,3 +1,5 @@
+/** https://hackr.io/blog/cpp-projects **/
+
 #include <iostream>
 #include "bookstore.h"
 

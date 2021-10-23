@@ -5,7 +5,7 @@ Bookstore::Bookstore(std::string bookstoreName){
 }
 
 void Bookstore::AddBook(std::string title, std::string author){
-  if (title != "" && author != ""){
+  if (title != "" && author != "" && !(this->book_count >= 100)){
     // Add a new Book to the array. Increment the count at the same time.
     this->inventory[this->book_count++] = Book(title, author);
   }else{
@@ -29,7 +29,7 @@ void Bookstore::RemoveBook(int id){
 }
 
 void Bookstore::PrintBooks(){
-  for(int i = 0, len = this->book_count; i <= len; i++){
+  for(int i = 0, len = this->book_count; i < len; i++){
     std::cout << (i+1) << ". ID: " << this->inventory[i].GetId() << ", Title: " << this->inventory[i].GetTitle() << ", Author: " << this->inventory[i].GetAuthor() << std::endl;
   }
 }
