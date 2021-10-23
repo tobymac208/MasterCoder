@@ -11,9 +11,13 @@ int main(){
 
   while(1){
     bookstore->PrintBooks();
-    std::cout << "Please enter a choice." << std::endl;
+    std::cout << "\n\n";
+    std::cout << "1. Checkout book." << std::endl;
+    std::cout << "2. Return book." << std::endl;
+    std::cout << "Choice: ";
 
-    break;
+    std::string choice;
+    std::cin >> choice;
   }
 
   // Unallocate space

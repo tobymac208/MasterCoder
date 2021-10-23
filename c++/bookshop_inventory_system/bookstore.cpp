@@ -30,6 +30,6 @@ void Bookstore::RemoveBook(int id){
 
 void Bookstore::PrintBooks(){
   for(int i = 0, len = this->book_count; i < len; i++){
-    std::cout << (i+1) << ". ID: " << this->inventory[i].GetId() << ", Title: " << this->inventory[i].GetTitle() << ", Author: " << this->inventory[i].GetAuthor() << std::endl;
+    std::cout << "-> ID: " << this->inventory[i].GetId() << ", Title: " << this->inventory[i].GetTitle() << ", Author: " << this->inventory[i].GetAuthor() << std::endl;
   }
 }
