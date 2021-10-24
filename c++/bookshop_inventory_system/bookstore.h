@@ -8,11 +8,16 @@ private:
   std::string bookstoreName;
   Book inventory[100];
   int book_count = 0;
+
+  bool RemoveBook(int);
+  void AddBook(std::string, std::string);
+  bool ReturnBook(int);
 public:
   Bookstore(std::string);
-  void AddBook(std::string, std::string);
-  void RemoveBook(int);
+  void AddBookPrompt();
+  void RemoveBookPrompt();
   void PrintBooks();
+  void ReturnBookPrompt();
 };
 
 #endif

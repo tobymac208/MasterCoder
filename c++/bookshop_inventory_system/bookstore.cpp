@@ -2,6 +2,10 @@
 
 Bookstore::Bookstore(std::string bookstoreName){
   this->bookstoreName = bookstoreName;
+
+  this->AddBook("C++", "Bjarne Stroustrap");
+  this->AddBook("Mel Gibson's Rants", "Not Mel Gibson");
+  this->AddBook("C", "Dennis Ritchie");
 }
 
 void Bookstore::AddBook(std::string title, std::string author){
@@ -13,19 +17,54 @@ void Bookstore::AddBook(std::string title, std::string author){
   }
 }
 
-void Bookstore::RemoveBook(int id){
+bool Bookstore::RemoveBook(int id){
   Book inventory[100];
   int count = 0;
+  bool removed = false;
 
   // Add all items back into the array except for that id.
   for(int i = 0, len = this->book_count; i <= len; i++){
     if(this->inventory[i].GetId() != id){
-      inventory[count++] = this->inventory[i];
+      this->inventory[count++] = this->inventory[i];
+    }else{
+      removed = true;
     }
   }
+  if (removed)
+    this->book_count--;
 
-  // Decrement the count by 1.
-  this->book_count--;
+  return removed;
+}
+
+void Bookstore::AddBookPrompt(){
+  std::string title;
+  std::string author;
+
+  // Verify the buffer is clear
+  std::cin.ignore();
+
+  std::cout << "Book's title: ";
+  std::getline(std::cin, title);
+
+  std::cout << "Author's name: ";
+  std::getline(std::cin, author);
+
+  this->AddBook(title, author);
+}
+
+void Bookstore::RemoveBookPrompt(){
+  std::cout << "Enter the ID of the book: ";
+  int id;
+  std::cin >> id;
+  id = (int)id;
+  // TODO: Attempt to search for the id
+  bool removed = this->RemoveBook(id);
+  // TOOD: Remove that book from the current inventory.
+  if (removed){
+    std::cout << "The book's been checked out." << std::endl;
+  }else{
+    std::cout << "The operation failed." << std::endl;
+  }
 }
 
 void Bookstore::PrintBooks(){

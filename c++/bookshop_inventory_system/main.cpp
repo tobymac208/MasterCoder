@@ -5,19 +5,34 @@
 
 int main(){
   Bookstore* bookstore = new Bookstore("US's Best Books");
-  bookstore->AddBook("Mel Gibson's Adventures", "Mel Gibson");
-  bookstore->AddBook("Mel Gibson's Lawsuit", "Some Guy");
-  bookstore->AddBook("C++", "Bjarne Stroustrap");
 
   while(1){
     bookstore->PrintBooks();
     std::cout << "\n\n";
     std::cout << "1. Checkout book." << std::endl;
-    std::cout << "2. Return book." << std::endl;
+    std::cout << "2. Add book." << std::endl;
     std::cout << "Choice: ";
 
-    std::string choice;
+    int choice;
     std::cin >> choice;
+
+    switch (choice){
+      case 1:
+      {
+        bookstore->RemoveBookPrompt();
+        break;
+      }
+      case 2:
+      {
+        bookstore->AddBookPrompt();
+        break;
+      }
+      default:
+      {
+        std::cout << "Invalid input." << std::endl;
+        break;
+      }
+    }
   }
 
   // Unallocate space
